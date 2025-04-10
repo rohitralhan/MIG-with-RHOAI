@@ -13,11 +13,11 @@ An accelerator profile is a Custom Resource Definition (CRD) that specifies the 
 
  1. Login to RHOAI dashboard
  
-![enter image description here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/RHOAILoginOut.gif)
+![Login to RHOAI](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/RHOAILoginOut.gif)
 
  2. Navigate to **`Settings → Accelerator Profiles`** click **`Create accelerated profiles`** button and follow the on-screen instructions to create two accelerator profiles **```mig-1g-6gb```** and **```mig-2g-12gb```**.
 
-![enter image description here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/CreateAccProfileOut.gif)
+![Accelerator Profiles](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/CreateAccProfileOut.gif)
 
 ---
 #### Deploy a model server and the model with the associated MIG Profile
@@ -50,14 +50,14 @@ For this demonstration, we are using an iris model available [here](https://raw.
 	 v. Path:  **`iris`** or path to your model in the S3 buket
  10. Click **```Deploy```** to deploy the model
 
-![enter image description here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/DeployOut.gif)
+![Model Deployment](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/DeployOut.gif)
 
 If you navigate to  **```Workloads --> Pods --> nvidia-driver-daemonset-***** pod --> Terminal```** in the **```nvidia-gpu-operator```** project ,  type **```nvidia-smi```** it will how a similar output shown in the image below. As you can see in our case the model server is using the MIG profile with GIID as 1 which is our 12 GB MIG instance as selected above while creating the model server.
 
-![enter image description here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/NvidiaMig-2g.png)
+![NVIDIA SMI Output](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/NvidiaMig-2g.png)
 
 ---
-#### Scale model server for Load Balancing
+#### Scale model server
 Scaling a model server in **OpenShift** for **load balancing**, using **Multi-Instance GPU (MIG)** is a great way to optimize GPU resource utilization, especially on **NVIDIA  A or H series** or similar GPUs. Next we will look at how we can scale the model server in RHOAI:
 
 Follow the steps below to scale the model server:<BR>
@@ -71,4 +71,4 @@ Follow the steps below to scale the model server:<BR>
 
 The animation below shows multiple mig-1g-6gb partitions being utilized across two worker nodes having an NVIDIA A30 GPU each and two mig-1g-6gb partitions on each GPU.
 
-![enter image description here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/ScaleDeployOut.gif)
+![Scale model server](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/ScaleDeployOut.gif)
