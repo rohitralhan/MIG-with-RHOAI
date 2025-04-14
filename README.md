@@ -1,7 +1,7 @@
 # Multi Instance GPU with Red Hat OpenShift AI
 
 ## Using MIG in Red Hat OpenShift AI
-MIG is now enabled, you can now go ahead and test it using Red Hat OpenShift AI (RHOAI) as explained below.
+Once MIG is enabled (refer to these [instructions](https://github.com/rohitralhan/RHOAI-NVIDIA-MIG-GPU/blob/main/README.md) to enable MIG), you can now go ahead and test it using Red Hat OpenShift AI (RHOAI) as explained below.
 For using MIG profiles in Red Hat OpenShift AI we will need to:
 
  - Configure Accelerator Profiles in RHOAI Dashboard
@@ -15,7 +15,7 @@ An accelerator profile is a Custom Resource Definition (CRD) that specifies the 
  
 ![Login to RHOAI](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/RHOAILoginOut.gif)
 
- 2. Navigate to **`Settings → Accelerator Profiles`** click **`Create accelerated profiles`** button and follow the on-screen instructions to create two accelerator profiles **```mig-1g-6gb```** and **```mig-2g-12gb```**.
+ 2. Navigate to **`Settings → Accelerator Profiles`** click **`Create accelerated profiles`** button and follow the on-screen instructions to create two accelerator profiles **```NVIDIA mig-1g-6gb```** and **```NVIDIA mig-2g-12gb```**.
 
 ![Accelerator Profiles](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/CreateAccProfileOut.gif)
 
