@@ -71,4 +71,4 @@ Follow the steps below to scale the model server:<BR>
 
 The animation below shows multiple mig-1g-6gb partitions being utilized across two worker nodes having an NVIDIA A30 GPU each and two mig-1g-6gb partitions on each GPU.
 
-![Scale model server](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/images/ScaleDeployOut.gif)
+![Scale model server](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/ScaleDeployOut.gif)
