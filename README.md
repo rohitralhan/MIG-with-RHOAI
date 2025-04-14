@@ -22,9 +22,9 @@ An accelerator profile is a Custom Resource Definition (CRD) that specifies the 
 ---
 #### Deploy a model server and the model with the associated MIG Profile
 Once the Accelerator Profiles are created, navigate to the data science project, create a model server, and deploy the model. 
-For this demonstration, we are using an iris model available [here](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/models/rf_iris.onnx). 
+For this demonstration, we are using an iris model available [here](https://github.com/rohitralhan/MIG-with-RHOAI/raw/refs/heads/main/models/rf_iris.onnx). 
 
- 1. Download the [rf_iris.onnx](https://raw.githubusercontent.com/rohitralhan/GPUSharingMIG/refs/heads/main/models/rf_iris.onnx) model.
+ 1. Download the [rf_iris.onnx](https://github.com/rohitralhan/MIG-with-RHOAI/raw/refs/heads/main/models/rf_iris.onnx) model.
  2. Upload the model to a S3/S3 compatible bucket 
  3. Login to the Red Hat OpenShift AI console 
  4. Navigate to **```Data Science Projects --> Create Project```**, follow the onscreen instructions to create the project
