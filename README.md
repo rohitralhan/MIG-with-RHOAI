@@ -44,7 +44,7 @@ For this demonstration, we are using an iris model available [here](https://gith
 	- Serving runtime: **`OpenVINO Model Server`**
 	- Model server replicas: **`1`**
 	- Model server size: **`Small`** (this can be adjusted according to the model needs)
-	- Accelerator: **`NVIDIA mig-2g-12gb`** (the reference to the MIG partition created)
+	- Accelerator: **`NVIDIA mig-2g-12gb`** (the reference to the MIG partition created) (Ignore the warning `The serving runtime you have selected is not compatible with the selected accelerator`)
 	- Number of accelerators: **`1`**
 	- **`Enable`** the **`Make deployed models available through an external route`** option
 	- **`Enable`** the **`Require token authentication`** option
