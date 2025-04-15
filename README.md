@@ -31,12 +31,13 @@ For this demonstration, we are using an iris model available [here](https://gith
  5. Next create a data connection for saving the **`rf_iris.onnx`** models.
 	 1. Navigate to the **`Connections`** tab and click **`Create Connection`** button
 	 2. On the **`Add conncetion`** screen fill the form with the following values and click create. (for instructions on installing Minio an S3 compaitable object store, refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/))
-	     - Connection type: **`S3 compatible object storage`**
-	     - Connection name: **`iris-data`**
-	     - Access key: **`<<minio login user name>>`**
-	     - Secret key: **`<<minio login user password>>`**
-	     - Endpoint: **`<<minio (service) url>>`**vi. Region: **`us-east-1`**
-	     - Bucket: **`<<minio bucket name>>`**
+		- Connection type: **`S3 compatible object storage`**
+		- Connection name: **`iris-data`**
+		- Access key: **`<<minio login user name>>`**
+		- Secret key: **`<<minio login user password>>`**
+		- Endpoint: **`<<minio (service) url>>`**
+		- Region: **`us-east-1`**
+		- Bucket: **`<<minio bucket name>>`**
  6. Next we will create a model server 
  7. Navigate to the **`Models`** tab and click **`Select multi-model`** and then click **`Add model server`** button. On the **`Add model server`** screen fill the form with the following values:
 	- Model server name: infer-model-server
@@ -61,6 +62,25 @@ For this demonstration, we are using an iris model available [here](https://gith
 Once the model is successfully deployed, navigate to  **```Workloads --> Pods --> nvidia-driver-daemonset-***** pod --> Terminal```** in the **```nvidia-gpu-operator```** project ,  type **```nvidia-smi```** it will show an output similar to the one shown in the image below. As you can see in our case the model server is using the MIG profile with GIID as 1 which is our 12 GB MIG instance as selected above while creating the model server.
 
 ![NVIDIA SMI Output](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/NvidiaMig-2g.png)
+
+#### Test the model
+
+To test the model set the below `environment variables` and run the `curl` command as shown below
+
+- Retrieve the `model url` from `Data Science Project --> Project --> Models --> Deployed models --> Inference endpoint --> Click Internal and external endpoint details - Copy External url`
+- Retrieve the `model token` from `Data Science Project --> Project --> Models --> Tokens --> Token secret --> Click Copy icon`
+
+```
+MODEL_URL="Retrieve from the deployed model" 
+TOKEN="Retrieve from the deployed model"
+HEADER="Authorization: Bearer ${TOKEN}"
+PAYLOAD='{"inputs": [{ "name": "X", "shape": [1, 4], "datatype": "FP32", "data": [3, 4, 3, 2] } ]}'
+```
+
+```curl -X POST $MODEL_URL -H $HEADER -d $PAYLOAD  -k```
+
+
+![Model Details](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/model-details.gif)
 
 ---
 #### Scale model server
