@@ -25,12 +25,12 @@ Once the Accelerator Profiles are created, navigate to the data science project,
 For this demonstration, we are using an iris model available [here](https://github.com/rohitralhan/MIG-with-RHOAI/raw/refs/heads/main/models/rf_iris.onnx). 
 
  1. Download the [rf_iris.onnx](https://github.com/rohitralhan/MIG-with-RHOAI/raw/refs/heads/main/models/rf_iris.onnx) model.
- 2. Upload the model to a S3 or S3 compatible bucket. You can use Minio (S3 compatible object store) on OpenShift, for instructions refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/) 
+ 2. Upload the model to a S3 or S3 compatible bucket. You can use Minio (S3 compatible object store) on OpenShift, for instructions refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/). DO NOT upload the model to the bucket root, create a folder in the bucket and then upload the model.
  3. Login to the Red Hat OpenShift AI console 
  4. Navigate to **`Data Science Projects --> Create Project`**, follow the onscreen instructions to create the project
- 5. Next create a data connection for saving the **`rf_iris.onnx`** models.
+ 5. Next create a data connection for retrieving the **`rf_iris.onnx`** models.
 	 1. Navigate to the **`Connections`** tab and click **`Create Connection`** button
-	 2. On the **`Add conncetion`** screen fill the form with the following values and click create. (for instructions on installing Minio an S3 compaitable object store, refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/))
+	 2. On the **`Add conncetion`** screen fill the form with the following values and click create. (for instructions on installing Minio an S3 compaitable object store, refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/)). If you are NOT using Minio on OpenShift, replace the S3 connection details as appropriate to your environment.
 		- Connection type: **`S3 compatible object storage`**
 		- Connection name: **`iris-data`**
 		- Access key: **`<<minio login user name>>`**
