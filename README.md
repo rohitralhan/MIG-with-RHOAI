@@ -30,32 +30,31 @@ For this demonstration, we are using an iris model available [here](https://gith
  4. Navigate to **`Data Science Projects --> Create Project`**, follow the onscreen instructions to create the project
  5. Next create a data connection for saving the **`rf_iris.onnx`** models.
 	 1. Navigate to the **`Connections`** tab and click **`Create Connection`** button
-	 2. On the **`Add conncetion`** screen fill the form with the following values and click create. (for instructions refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/)
-            i. Connection type: **`S3 compatible object storage`**
-	    ii. Connection name: **`iris-data`**  
-	    iii. Access key: **`<<minio login user name>>`**
-	    iv. Secret key: **`<<minio login user password>>`**
-	    v. Endpoint: **`<<minio (service) url>>`**
-	    vi. Region: **`us-east-1`**
-	    vii. Bucket: **`<<minio bucket name>>`**
- 6. Now we will create a model server 
- 7. Navigate to the **`Models`** tab and click **`Select multi-model`** and then click **`Add model server`** button. On the **`Add model server`** screen fill the form with the following values:  
-	 i. Model server name: infer-model-server  
-	 ii. Serving runtime: **`OpenVINO Model Server`**  
-	 iii. Model server replicas: **`1`**
-	 iv. Model server size: **`Small`** (this can be adjusted according to the model needs)
-	 v. Accelerator: **`NVIDIA mig-2g-12gb`** (the reference to the MIG partition created)
-	 vi. Number of accelerators: **`1`**
-	 vii. **`Enable`** the **`Make deployed models available through an external route`** option  
-	 viii. **`Enable`** the **`Require token authentication`** option
- 8. Click **```Add```** to add a model server.
- 9. Once the model server is added click **`Deploy model`** on the right of the model server. Fill out the form with the following values:
-	 i. Model name:  **`iris-model`**
-	 ii. Model framework:  **`onnx - 1`**
-	 iii. Select  Existing data connection, created in step 5 above
-	 iv. Select the  **`iris-data`**  data connection
-	 v. Path:  **`<<path inside the bucket>>`**, path to the model in the S3 buket
- 10. Click **`Deploy`** to deploy the model
+	 2. On the **`Add conncetion`** screen fill the form with the following values and click create. (for instructions on installing Minio an S3 compaitable object store, refer to [minio install](https://ai-on-openshift.io/tools-and-applications/minio/minio/))
+	     - Connection type: **`S3 compatible object storage`**
+	     - Connection name: **`iris-data`**
+	     - Access key: **`<<minio login user name>>`**
+	     - Secret key: **`<<minio login user password>>`**
+	     - Endpoint: **`<<minio (service) url>>`**vi. Region: **`us-east-1`**
+	     - Bucket: **`<<minio bucket name>>`**
+ 6. Next we will create a model server 
+ 7. Navigate to the **`Models`** tab and click **`Select multi-model`** and then click **`Add model server`** button. On the **`Add model server`** screen fill the form with the following values:
+	- Model server name: infer-model-server
+	- Serving runtime: **`OpenVINO Model Server`**
+	- Model server replicas: **`1`**
+	- Model server size: **`Small`** (this can be adjusted according to the model needs)
+	- Accelerator: **`NVIDIA mig-2g-12gb`** (the reference to the MIG partition created)
+	- Number of accelerators: **`1`**
+	- **`Enable`** the **`Make deployed models available through an external route`** option
+	- **`Enable`** the **`Require token authentication`** option
+ 	- Click **```Add```** to add a model server.
+ 8. Once the model server is added click **`Deploy model`** on the right of the model server. Fill out the form with the following values:
+	- Model name:  **`iris-model`**
+	- Model framework:  **`onnx - 1`**
+	- Select  Existing data connection, created in step 5 above
+	- Select the  **`iris-data`**  data connection
+	- Path:  **`<<path inside the bucket>>`**, path to the model in the S3 buket
+9. Click **`Deploy`** to deploy the model
 
 ![Model Deployment](https://raw.githubusercontent.com/rohitralhan/MIG-with-RHOAI/refs/heads/main/images/DeployOut.gif)
 
